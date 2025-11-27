@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Home Coppa del Nonno</title>
+<style>
+  body {
+    background-color: #2b2b2b; /* sfondo grigio scuro */
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+  }
+  h1 {
+    margin: 20px;
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .track {
+    border: 2px solid red; /* cornice rossa */
+    padding: 10px;
+    background-color: #4d4d4d; /* grigio scuro */
+    border-radius: 8px;
+    transition: transform 0.2s, background-color 0.2s;
+    flex: 1 1 300px; /* box flessibile */
+    max-width: 400px;
+  }
+  .track:hover {
+    transform: scale(1.05);
+    background-color: #808080; /* grigio chiaro al passaggio */
+  }
+  .track img {
+    width: 80%; /* occupa l’80% del box, si ridimensiona */
+    max-width: 400px; /* limite massimo */
+    height: auto; /* mantiene proporzioni */
+    display: block;
+    margin: 0 auto 10px;
+  }
+  .track span {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+
+  /* Regole responsive per schermi piccoli */
+  @media (max-width: 600px) {
+    .track img {
+      width: 100%; /* su mobile i loghi occupano tutta la larghezza del box */
+      max-width: 300px;
+    }
+  }
+  /* Colore link in vari stati */
+a:link {
+  color: #ff0000; /* rosso acceso per link normali */
+  text-decoration: none; /* rimuove sottolineatura */
+}
+
+a:visited {
+  color: #cc0000; /* rosso più scuro per link già visitati */
+}
+
+a:hover {
+  color: #ff4d4d; /* rosso chiaro al passaggio */
+  text-decoration: underline; /* sottolinea al passaggio */
+}
+
+a:active {
+  color: #990000; /* rosso scuro quando cliccato */
+}
+</style>
+</head>
+<body>
+
+  <h1>🏁 Home Classifiche Coppa del Nonno</h1>
+  <p>Seleziona un tracciato per vedere la tabella dei risultati</p>
+
+  <div class="grid">
+    <!-- Esempio tracciato 1 -->
+    <a href="Arese.html" class="track">
+      <img src="tracciati\Arese.png" alt="Circuito di Arese">
+      <span>Arese</span>
+    </a>
+
+    <!-- Esempio tracciato 2 -->
+    <a href="silverstone.html" class="track">
+      <img src="logo-silverstone.png" alt="Circuito di Silverstone">
+      <span>Silverstone</span>
+    </a>
+
+    <!-- Esempio tracciato 3 -->
+    <a href="spa.html" class="track">
+      <img src="logo-spa.png" alt="Circuito di Spa">
+      <span>Spa-Francorchamps</span>
+    </a>
+
+    <!-- Aggiungi altri tracciati -->
+  </div>
+
+</body>
+</html>
