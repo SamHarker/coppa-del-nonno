@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Classifica Formula 1</title>
+  <style>
+    body {
+      background-color: #2b2b2b; /* sfondo pagina grigio scuro */
+      font-family: Arial, sans-serif;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #2b2b2b; /* sfondo tabella */
+    }
+    th, td {
+      border: 1px solid red; /* griglia rossa */
+      padding: 8px;
+      text-align: center;
+      color: white; /* testo bianco */
+      cursor: pointer;
+    }
+    thead tr {
+      background-color: black; /* intestazione nera */
+    }
+    tbody tr:nth-child(odd) {
+      background-color: #4d4d4d; /* grigio scuro */
+    }
+    tbody tr:nth-child(even) {
+      background-color: #808080; /* grigio chiaro */
+    }
+    th:hover {
+      background-color: #222; /* effetto hover */
+    }
+    .asc::after {
+      content: " ↑";
+    }
+    .desc::after {
+      content: " ↓";
+    }
+    th.no-sort {
+      cursor: default; /* colonna non ordinabile */
+    }
+  </style>
+</head>
+<body>
+
+  <img src="CdN.png" alt="Logo Formula 1" style="display:block; margin:20px auto; width:751px;">
+
+  <table id="myTable">
+    <thead>
+      <tr>
+        <th class="no-sort">Posizione</th>
+        <th>Pilota</th>
+        <th>Auto</th>
+        <th>Velocità Massima</th>
+        <th>Miglior giro</th>
+		<th>Video</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Verstappen</td>
+        <td>Red Bull</td>
+        <td>390</td>
+        <td>1:20.5</td>
+		<td><a href=https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1>Video</a></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Leclerc</td>
+        <td>Ferrari</td>
+        <td>280</td>
+        <td>1:21.2</td>
+		<td><a href=https://www.youtube.com/watch?v=E8gmARGvPlI&list=RDE8gmARGvPlI&start_radio=1>Video</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Hamilton</td>
+        <td>Mercedes</td>
+        <td>310</td>
+        <td>1:19.8</td>
+		<td><a href=https://www.youtube.com/watch?v=7SiFPFxcEcg&list=RD7SiFPFxcEcg&start_radio=1>Video</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function sortTable(table, colIndex, thElement, forceDesc = false) {
+      const tbody = table.tBodies[0];
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      let asc = table.dataset.sortOrder !== "asc";
+
+      // Se forziamo decrescente all'apertura
+      if (forceDesc) asc = false;
+
+      rows.sort((a, b) => {
+        const aText = a.cells[colIndex].textContent.trim();
+        const bText = b.cells[colIndex].textContent.trim();
+
+        // prova numerico
+        const aNum = parseFloat(aText.replace(":", "."));
+        const bNum = parseFloat(bText.replace(":", "."));
+        if (!isNaN(aNum) && !isNaN(bNum)) {
+          return asc ? aNum - bNum : bNum - aNum;
+        }
+        return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+      });
+
+      rows.forEach(row => tbody.appendChild(row));
+      table.dataset.sortOrder = asc ? "asc" : "desc";
+
+      // aggiorna frecce
+      table.querySelectorAll("th").forEach(th => th.classList.remove("asc", "desc"));
+      if (thElement) thElement.classList.add(asc ? "asc" : "desc");
+
+      // aggiorna numerazione Posizione
+      Array.from(tbody.querySelectorAll("tr")).forEach((row, i) => {
+        row.cells[0].textContent = i + 1;
+      });
+    }
+
+    // Attiva ordinamento cliccando sulle colonne (tranne Posizione)
+    document.querySelectorAll("#myTable th").forEach((th, index) => {
+      if (!th.classList.contains("no-sort")) {
+        th.addEventListener("click", () => {
+          sortTable(document.getElementById("myTable"), index, th);
+        });
+      }
+    });
+
+    // Ordinamento automatico all'apertura per colonna "Miglior giro" (indice 4)
+    window.onload = () => {
+      const table = document.getElementById("myTable");
+      const th = table.querySelectorAll("th")[4]; // colonna Miglior giro
+      sortTable(table, 4, th, true); // forza ordine decrescente
+    };
+  </script>
+
+</body>
+</html>
