@@ -71,8 +71,12 @@ a:active {
   </style>
 </head>
 <body>
-
+ <div class="header">
+  <!-- Logo della pista -->
   <img src="tracciati\tazionuvolari.jpg" alt="Logo Tazio Nuvolari" style="display:block; margin:20px auto; width:751px;">
+  <!-- Tasto Home -->
+  <a href="index.html" class="home-btn">🏠 Home</a>
+ </div>
 
   <table id="myTable">
     <thead>
@@ -128,7 +132,16 @@ a:active {
     </tbody>
   </table>
 
-  <script>
+<script>
+    // Funzione che converte un tempo "MM:SS.xx" o "MM:SS:xx" in centesimi di secondo
+    function parseTime(str) {
+      const parts = str.split(/[:.]/); // divide su ":" e "."
+      const minutes = parseInt(parts[0], 10) || 0;
+      const seconds = parseInt(parts[1], 10) || 0;
+      const centiseconds = parseInt(parts[2], 10) || 0;
+      return (minutes * 60 + seconds) * 100 + centiseconds;
+    }
+
     function sortTable(table, colIndex, thElement, forceDesc = false) {
       const tbody = table.tBodies[0];
       const rows = Array.from(tbody.querySelectorAll("tr"));
@@ -141,12 +154,14 @@ a:active {
         const aText = a.cells[colIndex].textContent.trim();
         const bText = b.cells[colIndex].textContent.trim();
 
-        // prova numerico
-        const aNum = parseFloat(aText.replace(":", "."));
-        const bNum = parseFloat(bText.replace(":", "."));
-        if (!isNaN(aNum) && !isNaN(bNum)) {
-          return asc ? aNum - bNum : bNum - aNum;
+        // prova come tempo
+        const aTime = parseTime(aText);
+        const bTime = parseTime(bText);
+
+        if (!isNaN(aTime) && !isNaN(bTime)) {
+          return asc ? aTime - bTime : bTime - aTime;
         }
+        // fallback: confronto testuale
         return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
       });
 
@@ -178,8 +193,9 @@ a:active {
       const th = table.querySelectorAll("th")[4]; // colonna Miglior giro
       sortTable(table, 4, th, true); // forza ordine decrescente
     };
-  </script>
+</script>
 
 </body>
 </html>
+
 
