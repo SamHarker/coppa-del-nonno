@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Classifica Coppa del Nonno</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #2b2b2b;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 20px;
+    }
+    .header img {
+      display: block;
+      margin: 0 auto 16px auto;
+      width: 751px;
+      max-width: 100%;
+    }
+    .home-btn {
+      display: inline-block;
+      color: #ff0000;
+      text-decoration: none;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .home-btn:hover { color: #ff4d4d; text-decoration: underline; }
+
+    /* ===== YEAR SELECTION VIEW ===== */
+    #year-view {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    #year-view h2 {
+      color: white;
+      font-size: 22px;
+      margin-bottom: 32px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 2px solid red;
+      padding-bottom: 8px;
+    }
+
+    .year-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .year-card {
+      background-color: #1e1e1e;
+      border: 2px solid red;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      width: 160px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s;
+      user-select: none;
+    }
+    .year-card:hover {
+      background-color: #cc0000;
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(255,0,0,0.4);
+    }
+    .year-card:active {
+      transform: translateY(0);
+    }
+
+    /* ===== TABLE VIEW ===== */
+    #table-view {
+      display: none;
+      padding: 20px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: 2px solid red;
+      color: red;
+      padding: 8px 18px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      transition: background-color 0.2s, color 0.2s;
+      font-family: Arial, sans-serif;
+    }
+    .back-btn:hover {
+      background-color: red;
+      color: white;
+    }
+
+    .table-title {
+      color: white;
+      font-size: 20px;
+      margin-bottom: 16px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid red;
+      padding-bottom: 8px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #2b2b2b;
+    }
+    th, td {
+      border: 1px solid red;
+      padding: 8px;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+    }
+    thead tr {
+      background-color: black;
+    }
+    tbody tr:nth-child(odd)  { background-color: #4d4d4d; }
+    tbody tr:nth-child(even) { background-color: #808080; }
+    th:hover { background-color: #222; }
+
+    .asc::after  { content: " ↑"; }
+    .desc::after { content: " ↓"; }
+    th.no-sort   { cursor: default; }
+
+    a:link    { color: #ff0000; text-decoration: none; }
+    a:visited { color: #cc0000; }
+    a:hover   { color: #ff4d4d; text-decoration: underline; }
+    a:active  { color: #990000; }
+
+    .pilot {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .flag {
+      width: 24px;
+      margin-right: 8px;
+    }
+
+    .no-data {
+      color: #aaa;
+      text-align: center;
+      padding: 40px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="tracciati/castelletto.jpg" alt="Logo Castelletto">
+    <a href="index.html" class="home-btn">🏠 Home</a>
+  </div>
+
+  <!-- VIEW 1: selezione anno -->
+  <div id="year-view">
+    <h2>Seleziona la Stagione</h2>
+    <div class="year-cards" id="year-cards">
+      <!-- Le schede anno vengono generate dinamicamente -->
+    </div>
+  </div>
+
+  <!-- VIEW 2: tabella filtrata per anno -->
+  <div id="table-view">
+    <button class="back-btn" id="back-btn">← Torna alle stagioni</button>
+    <div class="table-title" id="table-title">Stagione ????</div>
+
+    <table id="myTable">
+      <thead>
+        <tr>
+          <th class="no-sort">Posizione</th>
+          <th>Pilota</th>
+          <th>Auto</th>
+          <th>Velocità Massima</th>
+          <th>Miglior giro</th>
+          <th>Video</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+    <p class="no-data" id="no-data" style="display:none;">Nessun dato disponibile per questa stagione.</p>
+  </div>
+
+  <script>
+    // ===== DATI =====
+    // Aggiungi qui tutte le righe. Il campo "stagione" determina in quale anno compare.
+    const allData = [
+      {
+        pilota: "Luca",
+        bandiera: "bandiere/italia.png",
+        nazionalita: "Italia",
+        auto: "MX-5 NA 115",
+        velocita: "n/a",
+        tempo: "01:32.24",
+        stagione: 2025,
+        video: null
+      },
+      {
+        pilota: "Alessio",
+        bandiera: "bandiere/italia.png",
+        nazionalita: "Italia",
+        auto: "MX-5 NB/FL 1.6",
+        velocita: "112.9",
+        tempo: "1:42.92",
+        stagione: 2025,
+        video: "https://youtu.be/AW948qCoz34"
+      }
+      {
+        pilota: "Alessio",
+        bandiera: "bandiere/italia.png",
+        nazionalita: "Italia",
+        auto: "MX-5 NB/FL 1.6",
+        velocita: "119.8",
+        tempo: "1:39.23",
+        stagione: 2026,
+        video: "https://youtu.be/AW948qCoz34"
+      }
+    ];
+
+    // ===== RICAVA GLI ANNI DISPONIBILI =====
+    const years = [...new Set(allData.map(d => d.stagione))].sort((a, b) => b - a);
+
+    // ===== GENERA LE SCHEDE ANNO =====
+    const cardsContainer = document.getElementById("year-cards");
+    years.forEach(year => {
+      const card = document.createElement("div");
+      card.className = "year-card";
+      card.textContent = year;
+      card.addEventListener("click", () => showYear(year));
+      cardsContainer.appendChild(card);
+    });
+
+    // ===== MOSTRA TABELLA PER ANNO =====
+    function showYear(year) {
+      document.getElementById("year-view").style.display = "none";
+      document.getElementById("table-view").style.display = "block";
+      document.getElementById("table-title").textContent = `Stagione ${year}`;
+
+      const filtered = allData.filter(d => d.stagione === year);
+      const tbody = document.getElementById("tableBody");
+      tbody.innerHTML = "";
+
+      if (filtered.length === 0) {
+        document.getElementById("no-data").style.display = "block";
+        return;
+      }
+      document.getElementById("no-data").style.display = "none";
+
+      filtered.forEach((d, i) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${i + 1}</td>
+          <td>
+            <div class="pilot">
+              <img src="${d.bandiera}" alt="${d.nazionalita}" class="flag">
+              <span>${d.pilota}</span>
+            </div>
+          </td>
+          <td>${d.auto}</td>
+          <td>${d.velocita}</td>
+          <td>${d.tempo}</td>
+          <td>${d.video ? `<a href="${d.video}" target="_blank">Video</a>` : "n/a"}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Ordina automaticamente per miglior giro (colonna indice 4)
+      const table = document.getElementById("myTable");
+      const th = table.querySelectorAll("th")[4];
+      sortTable(table, 4, th, true);
+    }
+
+    // ===== TORNA ALLA SELEZIONE ANNO =====
+    document.getElementById("back-btn").addEventListener("click", () => {
+      document.getElementById("table-view").style.display = "none";
+      document.getElementById("year-view").style.display = "flex";
+    });
+
+    // ===== ORDINAMENTO COLONNE =====
+    function parseTime(str) {
+      const parts = str.split(/[:.]/);
+      const minutes      = parseInt(parts[0], 10) || 0;
+      const seconds      = parseInt(parts[1], 10) || 0;
+      const centiseconds = parseInt(parts[2], 10) || 0;
+      return (minutes * 60 + seconds) * 100 + centiseconds;
+    }
+
+    function sortTable(table, colIndex, thElement, forceAsc = false) {
+      const tbody = table.tBodies[0];
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      let asc = forceAsc ? true : (table.dataset.sortOrder !== "asc");
+
+      rows.sort((a, b) => {
+        const aText = a.cells[colIndex].textContent.trim();
+        const bText = b.cells[colIndex].textContent.trim();
+        const aTime = parseTime(aText);
+        const bTime = parseTime(bText);
+        if (!isNaN(aTime) && !isNaN(bTime)) {
+          return asc ? aTime - bTime : bTime - aTime;
+        }
+        return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+      });
+
+      rows.forEach(row => tbody.appendChild(row));
+      table.dataset.sortOrder = asc ? "asc" : "desc";
+
+      table.querySelectorAll("th").forEach(th => th.classList.remove("asc", "desc"));
+      if (thElement) thElement.classList.add(asc ? "asc" : "desc");
+
+      Array.from(tbody.querySelectorAll("tr")).forEach((row, i) => {
+        row.cells[0].textContent = i + 1;
+      });
+    }
+
+    // Attiva ordinamento cliccando sulle intestazioni
+    document.querySelectorAll("#myTable th").forEach((th, index) => {
+      if (!th.classList.contains("no-sort")) {
+        th.addEventListener("click", () => {
+          sortTable(document.getElementById("myTable"), index, th);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
