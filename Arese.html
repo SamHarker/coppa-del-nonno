@@ -2,355 +2,172 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Classifica Coppa del Nonno</title>
+  <title>Classifica Coppa del Nonno - Arese</title>
   <style>
-    body {
-      background-color: #2b2b2b; /* sfondo pagina grigio scuro */
-      font-family: Arial, sans-serif;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      background-color: #2b2b2b; /* sfondo tabella */
-    }
-    th, td {
-      border: 1px solid red; /* griglia rossa */
-      padding: 8px;
-      text-align: center;
-      color: white; /* testo bianco */
-      cursor: pointer;
-    }
-    thead tr {
-      background-color: black; /* intestazione nera */
-    }
-    tbody tr:nth-child(odd) {
-      background-color: #4d4d4d; /* grigio scuro */
-    }
-    tbody tr:nth-child(even) {
-      background-color: #808080; /* grigio chiaro */
-    }
-    th:hover {
-      background-color: #222; /* effetto hover */
-    }
-    .asc::after {
-      content: " ↑";
-    }
-    .desc::after {
-      content: " ↓";
-    }
-    th.no-sort {
-      cursor: default; /* colonna non ordinabile */
-    }
-	/* Colore link in vari stati */
-a:link {
-  color: #ff0000; /* rosso acceso per link normali */
-  text-decoration: none; /* rimuove sottolineatura */
-}
-
-a:visited {
-  color: #cc0000; /* rosso più scuro per link già visitati */
-}
-
-a:hover {
-  color: #ff4d4d; /* rosso chiaro al passaggio */
-  text-decoration: underline; /* sottolinea al passaggio */
-}
-
-a:active {
-  color: #990000; /* rosso scuro quando cliccato */
-}
-.pilot {
-  display: flex;
-  align-items: center; /* allinea verticalmente al centro */
-  justify-content: flex-start; /* bandiera e testo allineati a sinistra */
-}
-.flag {
-  width: 24px;
-  margin-right: 8px;
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: #2b2b2b; font-family: Arial, sans-serif; min-height: 100vh; }
+    .header { text-align: center; padding: 20px; }
+    .header img { display: block; margin: 0 auto 16px auto; width: 751px; max-width: 100%; }
+    .home-btn { display: inline-block; color: #ff0000; text-decoration: none; font-size: 16px; margin-bottom: 20px; }
+    .home-btn:hover { color: #ff4d4d; text-decoration: underline; }
+    #year-view { display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
+    #year-view h2 { color: white; font-size: 22px; margin-bottom: 32px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 2px solid red; padding-bottom: 8px; }
+    .year-cards { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .year-card { background-color: #1e1e1e; border: 2px solid red; color: white; font-size: 28px; font-weight: bold; width: 160px; height: 100px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 6px; transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s; user-select: none; }
+    .year-card:hover { background-color: #cc0000; transform: translateY(-4px); box-shadow: 0 6px 20px rgba(255,0,0,0.4); }
+    .year-card:active { transform: translateY(0); }
+    #table-view { display: none; padding: 20px; }
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; background: none; border: 2px solid red; color: red; padding: 8px 18px; cursor: pointer; font-size: 14px; border-radius: 4px; margin-bottom: 20px; transition: background-color 0.2s, color 0.2s; font-family: Arial, sans-serif; }
+    .back-btn:hover { background-color: red; color: white; }
+    .table-title { color: white; font-size: 20px; margin-bottom: 16px; text-align: center; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid red; padding-bottom: 8px; }
+    table { border-collapse: collapse; width: 100%; background-color: #2b2b2b; }
+    th, td { border: 1px solid red; padding: 8px; text-align: center; color: white; cursor: pointer; }
+    thead tr { background-color: black; }
+    tbody tr:nth-child(odd) { background-color: #4d4d4d; }
+    tbody tr:nth-child(even) { background-color: #808080; }
+    th:hover { background-color: #222; }
+    .asc::after { content: " ↑"; }
+    .desc::after { content: " ↓"; }
+    th.no-sort { cursor: default; }
+    a:link { color: #ff0000; text-decoration: none; }
+    a:visited { color: #cc0000; }
+    a:hover { color: #ff4d4d; text-decoration: underline; }
+    a:active { color: #990000; }
+    .pilot { display: flex; align-items: center; justify-content: flex-start; }
+    .flag { width: 24px; margin-right: 8px; }
+    .no-data { color: #aaa; text-align: center; padding: 40px; font-style: italic; }
   </style>
 </head>
 <body>
- <div class="header">
-  <!-- Logo della pista -->
-  <img src="tracciati\Arese.png" alt="Logo Arese" style="display:block; margin:20px auto; width:751px;">
-  <!-- Tasto Home -->
-  <a href="index.html" class="home-btn">🏠 Home</a>
- </div>
-	
-  <table id="myTable">
-    <thead>
-      <tr>
-        <th class="no-sort">Posizione</th>
-        <th>Pilota</th>
-        <th>Auto</th>
-        <th>Velocità Massima</th>
-        <th>Miglior giro</th>
-		<th>Stagione</th>
-		<th>Video</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Federico</span>
-         </div>
-        </td>
-        <td>MX-5 ND 1.5</td>
-        <td>122.8</td>
-        <td>01:00.58</td>
-		<td>2025</td>
-		<td><a href=https://youtu.be/uInYpbsof-Q?feature=shared>Video</a></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/australia.png" alt="Italia" class="flag">
-         <span>Manzo</span>
-         </div>
-        </td>
-        <td>MX-5 ND 2.0 (184)</td>
-        <td>136.1</td>
-        <td>00:57.56</td>
-		<td>2025</td>
-		<td><a href=https://www.youtube.com/watch?v=yHaNu-s2uIs>Video</a></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Alessio</span>
-         </div>
-        </td>
-        <td>MX-5 NB/FL 1.6</td>
-        <td>119.6</td>
-        <td>01:01.05</td>
-		<td>2025</td>
-		<td><a href=https://youtu.be/EsBk1PF9zmQ>Video</a></td>
-       </tr>
-	   <tr>
-        <td>4</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Roberto</span>
-         </div>
-        </td>
-        <td>MX-5 NB/FL 1.6</td>
-        <td>108.7</td>
-        <td>01:05.55</td>
-		<td>2025</td>
-		<td>n/a</td>
-	   </tr>
-	   <tr>
-        <td>5</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Mauro</span>
-         </div>
-        </td>
-        <td>MX-5 ND 1.5</td>
-        <td>116.1</td>
-        <td>01:04.73</td>
-		<td>2025</td>
-		<td>n/a</td>
-       </tr>
-	   <tr>
-        <td>6</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Tommaso</span>
-         </div>
-        </td>
-        <td>MX-5 NB/FL 1.8</td>
-        <td>n/a</td>
-        <td>01:02.50</td>
-		<td>2025</td>
-		<td>n/a</td>
-       </tr>
-	   <tr>
-        <td>7</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Micheal</span>
-         </div>
-        </td>
-        <td>MX-5 NB/FL 1.8</td>
-        <td>127</td>
-        <td>01:01.49</td>
-		<td>2025</td>
-		<td>n/a</td>
-       </tr>
-	   <tr>
-        <td>8</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Steve</span>
-         </div>
-        </td>
-        <td>MX-5 NB/FL 1.8</td>
-        <td>n/a</td>
-        <td>00:59.37</td>
-		<td>2025</td>
-		<td>n/a</td>
-       </tr>
-	   <tr>
-        <td>9</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Francesco</span>
-         </div>
-        </td>
-        <td>MX-5 NB/FL 1.6(T)</td>
-        <td>134.6</td>
-        <td>00:58.90</td>
-		<td>2025</td>
-		<td>n/a</td>
-       </tr>
-	   <tr>
-        <td>9</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Mike</span>
-         </div>
-        </td>
-        <td>MX-5 NA 1.8</td>
-        <td>122.3</td>
-        <td>00:58.71</td>
-		<td>2025</td>
-		<td>n/a</td>
-       </tr>
-	   <tr>
-        <td>10</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Satz</span>
-         </div>
-        </td>
-        <td>MX-5 NC 2.0</td>
-        <td>n/a</td>
-        <td>00:55.30</td>
-		<td>2025</td>
-		<td>n/a</td>
-       </tr>
-	   <tr>
-        <td>11</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/svizzera.png" alt="Italia" class="flag">
-         <span>Lorenzo</span>
-         </div>
-        </td>
-        <td>987 Cayman S</td>
-        <td>148.6</td>
-        <td>00:53.48</td>
-		<td>2025</td>
-		<td>n/a</td>
-       </tr>
-	   <tr>
-        <td>12</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Davide</span>
-         </div>
-        </td>
-        <td>MX-5 ND 2.0 (184)</td>
-        <td>145</td>
-        <td>00:52.80</td>
-		<td>2025</td>
-		<td><a href=https://youtu.be/nLrQTQlRwpw?si=sZQStYHoACorAk-o>Video</a></td>
-       </tr>
-	   <tr>
-        <td>13</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Dennis</span>
-         </div>
-        </td>
-        <td>MX-5 ND 2.0 (184)</td>
-        <td>132.5</td>
-        <td>01:00.39</td>
-		<td>2025</td>
-		<td>n/a</td>
-       </tr>
-	   <tr>
-        <td>14</td>
-        <td>
-         <div class="pilot">
-         <img src="bandiere/italia.png" alt="Italia" class="flag">
-         <span>Alberto</span>
-         </div>
-        </td>
-        <td>MX-5 RF 1.5</td>
-        <td>125</td>
-        <td>01:01.00</td>
-		<td>2025</td>
-		<td>n/a</td>
-       </tr>
-    </tbody>
-  </table>
+  <div class="header">
+    <img src="tracciati/Arese.png" alt="Logo Arese">
+    <a href="index.html" class="home-btn">🏠 Home</a>
+  </div>
 
-<script>
-    // Funzione che converte un tempo "MM:SS.xx" o "MM:SS:xx" in centesimi di secondo
+  <div id="year-view">
+    <h2>Seleziona la Stagione</h2>
+    <div class="year-cards" id="year-cards"></div>
+  </div>
+
+  <div id="table-view">
+    <button class="back-btn" id="back-btn">← Torna alle stagioni</button>
+    <div class="table-title" id="table-title">Stagione ????</div>
+    <table id="myTable">
+      <thead>
+        <tr>
+          <th class="no-sort">Posizione</th>
+          <th>Pilota</th>
+          <th>Auto</th>
+          <th>Velocità Massima</th>
+          <th>Miglior giro</th>
+          <th>Video</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <p class="no-data" id="no-data" style="display:none;">Nessun dato disponibile per questa stagione.</p>
+  </div>
+
+  <script>
+    const allData = [
+      { pilota: "Federico",  bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 ND 1.5",        velocita: "122.8", tempo: "01:00.58", stagione: 2025, video: "https://youtu.be/uInYpbsof-Q?feature=shared" },
+      { pilota: "Manzo",     bandiera: "bandiere/australia.png",  nazionalita: "Australia", auto: "MX-5 ND 2.0 (184)",  velocita: "136.1", tempo: "00:57.56", stagione: 2025, video: "https://www.youtube.com/watch?v=yHaNu-s2uIs" },
+      { pilota: "Alessio",   bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 NB/FL 1.6",     velocita: "119.6", tempo: "01:01.05", stagione: 2025, video: "https://youtu.be/EsBk1PF9zmQ" },
+      { pilota: "Roberto",   bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 NB/FL 1.6",     velocita: "108.7", tempo: "01:05.55", stagione: 2025, video: null },
+      { pilota: "Mauro",     bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 ND 1.5",        velocita: "116.1", tempo: "01:04.73", stagione: 2025, video: null },
+      { pilota: "Tommaso",   bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 NB/FL 1.8",     velocita: "n/a",   tempo: "01:02.50", stagione: 2025, video: null },
+      { pilota: "Micheal",   bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 NB/FL 1.8",     velocita: "127",   tempo: "01:01.49", stagione: 2025, video: null },
+      { pilota: "Steve",     bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 NB/FL 1.8",     velocita: "n/a",   tempo: "00:59.37", stagione: 2025, video: null },
+      { pilota: "Francesco", bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 NB/FL 1.6(T)",  velocita: "134.6", tempo: "00:58.90", stagione: 2025, video: null },
+      { pilota: "Mike",      bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 NA 1.8",        velocita: "122.3", tempo: "00:58.71", stagione: 2025, video: null },
+      { pilota: "Satz",      bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 NC 2.0",        velocita: "n/a",   tempo: "00:55.30", stagione: 2025, video: null },
+      { pilota: "Lorenzo",   bandiera: "bandiere/svizzera.png",   nazionalita: "Svizzera",  auto: "987 Cayman S",       velocita: "148.6", tempo: "00:53.48", stagione: 2025, video: null },
+      { pilota: "Davide",    bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 ND 2.0 (184)",  velocita: "145",   tempo: "00:52.80", stagione: 2025, video: "https://youtu.be/nLrQTQlRwpw?si=sZQStYHoACorAk-o" },
+      { pilota: "Dennis",    bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 ND 2.0 (184)",  velocita: "132.5", tempo: "01:00.39", stagione: 2025, video: null },
+      { pilota: "Alberto",   bandiera: "bandiere/italia.png",     nazionalita: "Italia",    auto: "MX-5 RF 1.5",        velocita: "125",   tempo: "01:01.00", stagione: 2025, video: null }
+    ];
+
+    const years = [...new Set(allData.map(d => d.stagione))].sort((a, b) => b - a);
+
+    const cardsContainer = document.getElementById("year-cards");
+    years.forEach(year => {
+      const card = document.createElement("div");
+      card.className = "year-card";
+      card.textContent = year;
+      card.addEventListener("click", () => showYear(year));
+      cardsContainer.appendChild(card);
+    });
+
+    function showYear(year) {
+      document.getElementById("year-view").style.display = "none";
+      document.getElementById("table-view").style.display = "block";
+      document.getElementById("table-title").textContent = "Stagione " + year;
+
+      const filtered = allData.filter(d => d.stagione === year);
+      const tbody = document.getElementById("tableBody");
+      tbody.innerHTML = "";
+
+      if (filtered.length === 0) {
+        document.getElementById("no-data").style.display = "block";
+        return;
+      }
+      document.getElementById("no-data").style.display = "none";
+
+      filtered.forEach((d, i) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML =
+          "<td>" + (i + 1) + "</td>" +
+          "<td><div class='pilot'><img src='" + d.bandiera + "' alt='" + d.nazionalita + "' class='flag'><span>" + d.pilota + "</span></div></td>" +
+          "<td>" + d.auto + "</td>" +
+          "<td>" + d.velocita + "</td>" +
+          "<td>" + d.tempo + "</td>" +
+          "<td>" + (d.video ? "<a href='" + d.video + "' target='_blank'>Video</a>" : "n/a") + "</td>";
+        tbody.appendChild(tr);
+      });
+
+      const table = document.getElementById("myTable");
+      const th = table.querySelectorAll("th")[4];
+      sortTable(table, 4, th, true);
+    }
+
+    document.getElementById("back-btn").addEventListener("click", () => {
+      document.getElementById("table-view").style.display = "none";
+      document.getElementById("year-view").style.display = "flex";
+    });
+
     function parseTime(str) {
-      const parts = str.split(/[:.]/); // divide su ":" e "."
+      const parts = str.split(/[:.]/);
       const minutes = parseInt(parts[0], 10) || 0;
       const seconds = parseInt(parts[1], 10) || 0;
       const centiseconds = parseInt(parts[2], 10) || 0;
       return (minutes * 60 + seconds) * 100 + centiseconds;
     }
 
-    function sortTable(table, colIndex, thElement, forceDesc = false) {
+    function sortTable(table, colIndex, thElement, forceAsc) {
       const tbody = table.tBodies[0];
       const rows = Array.from(tbody.querySelectorAll("tr"));
-      let asc = table.dataset.sortOrder !== "asc";
-
-      // Se forziamo decrescente all'apertura
-      if (forceDesc) asc = false;
+      let asc = forceAsc ? true : (table.dataset.sortOrder !== "asc");
 
       rows.sort((a, b) => {
         const aText = a.cells[colIndex].textContent.trim();
         const bText = b.cells[colIndex].textContent.trim();
-
-        // prova come tempo
         const aTime = parseTime(aText);
         const bTime = parseTime(bText);
-
         if (!isNaN(aTime) && !isNaN(bTime)) {
           return asc ? aTime - bTime : bTime - aTime;
         }
-        // fallback: confronto testuale
         return asc ? aText.localeCompare(bText) : bText.localeCompare(aText);
       });
 
       rows.forEach(row => tbody.appendChild(row));
       table.dataset.sortOrder = asc ? "asc" : "desc";
-
-      // aggiorna frecce
       table.querySelectorAll("th").forEach(th => th.classList.remove("asc", "desc"));
       if (thElement) thElement.classList.add(asc ? "asc" : "desc");
-
-      // aggiorna numerazione Posizione
       Array.from(tbody.querySelectorAll("tr")).forEach((row, i) => {
         row.cells[0].textContent = i + 1;
       });
     }
 
-    // Attiva ordinamento cliccando sulle colonne (tranne Posizione)
     document.querySelectorAll("#myTable th").forEach((th, index) => {
       if (!th.classList.contains("no-sort")) {
         th.addEventListener("click", () => {
@@ -358,24 +175,6 @@ a:active {
         });
       }
     });
-
-    // Ordinamento automatico all'apertura per colonna "Miglior giro" (indice 4)
-    window.onload = () => {
-      const table = document.getElementById("myTable");
-      const th = table.querySelectorAll("th")[4]; // colonna Miglior giro
-      sortTable(table, 4, th, true); // forza ordine decrescente
-    };
-</script>
-
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
