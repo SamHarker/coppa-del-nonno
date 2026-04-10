@@ -1,0 +1,46 @@
+/* ===== TASTO HOME VINTAGE ===== */
+.home-btn-vintage {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  background: #1a1a1a;
+  border: 1px solid #cc0000;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #cccccc;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+/* Angolini decorativi vintage */
+.home-btn-vintage::before,
+.home-btn-vintage::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-color: #cc0000;
+  border-style: solid;
+  transition: border-color 0.2s;
+}
+.home-btn-vintage::before {
+  top: -2px; left: -2px;
+  border-width: 1.5px 0 0 1.5px;
+}
+.home-btn-vintage::after {
+  bottom: -2px; right: -2px;
+  border-width: 0 1.5px 1.5px 0;
+}
+.home-btn-vintage:hover {
+  background: #cc0000;
+  color: #ffffff;
+  border-color: #ff4d4d;
+}
+.home-btn-vintage:hover::before,
+.home-btn-vintage:hover::after {
+  border-color: #ff4d4d;
+}
