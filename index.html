@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Home Coppa del Nonno</title>
+<style>
+  body {
+    background-color: #2b2b2b;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+  }
+  h1 {
+    margin: 20px;
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .track {
+    border: 2px solid red;
+    padding: 10px;
+    background-color: #4d4d4d;
+    border-radius: 8px;
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+    flex: 1 1 300px;
+    max-width: 400px;
+  }
+  .track:hover {
+    transform: translateY(-6px);
+    background-color: #808080;
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.45);
+    border-color: #ff4d4d;
+  }
+  .track img {
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+    transition: opacity 0.2s;
+  }
+  .track:hover img {
+    opacity: 0.85;
+  }
+  .track span {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  .track-label {
+    display: block;
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ff0000;
+    transition: color 0.2s;
+  }
+  .track-label::after {
+    content: " →";
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .track:hover .track-label {
+    color: #ff4d4d;
+  }
+  .track:hover .track-label::after {
+    opacity: 1;
+  }
+  @media (max-width: 600px) {
+    .track img {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  a:link    { color: #ff0000; text-decoration: none; }
+  a:visited { color: #cc0000; }
+  a:hover   { color: #ff4d4d; text-decoration: none; }
+  a:active  { color: #990000; }
+</style>
+</head>
+<body>
+  <h1>🏁 Home Classifiche Coppa del Nonno</h1>
+  <p>Seleziona un tracciato per vedere la tabella dei risultati</p>
+  <div class="grid">
+
+    <a href="Arese.html" class="track">
+      <img src="tracciati/Arese.png" alt="Circuito di Arese">
+      <span class="track-label">Circuito di Arese</span>
+    </a>
+
+    <a href="Castelletto.html" class="track">
+      <img src="tracciati/castelletto.jpg" alt="Circuito di Castelletto">
+      <span class="track-label">Circuito di Castelletto</span>
+    </a>
+
+    <a href="TazioNuvolari.html" class="track">
+      <img src="tracciati/tazionuvolari.jpg" alt="Circuito Tazio Nuvolari">
+      <span class="track-label">Circuito Tazio Nuvolari</span>
+    </a>
+
+  </div>
+</body>
+</html>
