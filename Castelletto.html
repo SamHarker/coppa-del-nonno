@@ -270,7 +270,7 @@
     filtered.forEach((d, i) => {
       const flagPath = getFlagPath(d.nazionalita);
       const flagHTML = flagPath ? `<img src="${flagPath}" alt="${d.nazionalita}" class="flag">` : "";
-      const videoHTML = (d.video && d.video !== "null")
+      const videoHTML = (d.video && d.video.startsWith("http"))
         ? `<a href="${d.video}" target="_blank">Video</a>`
         : "n/a";
 
