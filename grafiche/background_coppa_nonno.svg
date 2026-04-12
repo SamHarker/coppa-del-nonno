@@ -1,0 +1,172 @@
+<svg width="100%" viewBox="0 0 680 420" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Sfondo Coppa del Nonno</title>
+  <desc>Sfondo stile racing notturno con asfalto, curve e dettagli rossi</desc>
+  <style>
+    .bg { fill: #1a1a1a; }
+    .asphalt { fill: #222222; }
+    .stripe-w { fill: #2e2e2e; }
+    .line-r { stroke: #cc0000; stroke-width: 1; fill: none; }
+    .line-rd { stroke: #cc0000; stroke-width: 0.5; fill: none; stroke-dasharray: 8 6; }
+    .line-dk { stroke: #333; stroke-width: 0.5; fill: none; }
+    .line-bright { stroke: #ff1a1a; stroke-width: 1.5; fill: none; }
+    .dot-r { fill: #cc0000; }
+    .dot-dim { fill: #3d0000; }
+    .mark { fill: #2a2a2a; }
+    .kerb-r { fill: #8b0000; }
+    .kerb-w { fill: #2a2a2a; }
+    .grid { stroke: #2a2a2a; stroke-width: 0.4; fill: none; }
+  </style>
+
+  <rect class="bg" width="680" height="420"/>
+
+  <line class="grid" x1="0" y1="60" x2="680" y2="60"/>
+  <line class="grid" x1="0" y1="120" x2="680" y2="120"/>
+  <line class="grid" x1="0" y1="180" x2="680" y2="180"/>
+  <line class="grid" x1="0" y1="240" x2="680" y2="240"/>
+  <line class="grid" x1="0" y1="300" x2="680" y2="300"/>
+  <line class="grid" x1="0" y1="360" x2="680" y2="360"/>
+  <line class="grid" x1="80" y1="0" x2="80" y2="420"/>
+  <line class="grid" x1="160" y1="0" x2="160" y2="420"/>
+  <line class="grid" x1="240" y1="0" x2="240" y2="420"/>
+  <line class="grid" x1="320" y1="0" x2="320" y2="420"/>
+  <line class="grid" x1="400" y1="0" x2="400" y2="420"/>
+  <line class="grid" x1="480" y1="0" x2="480" y2="420"/>
+  <line class="grid" x1="560" y1="0" x2="560" y2="420"/>
+  <line class="grid" x1="640" y1="0" x2="640" y2="420"/>
+
+  <rect class="asphalt" x="0" y="310" width="680" height="80"/>
+  <rect class="stripe-w" x="0" y="312" width="680" height="3"/>
+  <rect class="stripe-w" x="0" y="384" width="680" height="3"/>
+
+  <rect class="kerb-r" x="0" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="20" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="40" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="60" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="80" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="100" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="120" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="140" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="160" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="180" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="200" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="220" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="240" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="260" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="280" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="300" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="320" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="340" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="360" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="380" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="400" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="420" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="440" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="460" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="480" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="500" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="520" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="540" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="560" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="580" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="600" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="620" y="387" width="20" height="10"/>
+  <rect class="kerb-r" x="640" y="387" width="20" height="10"/>
+  <rect class="kerb-w" x="660" y="387" width="20" height="10"/>
+
+  <rect class="kerb-w" x="0" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="20" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="40" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="60" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="80" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="100" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="120" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="140" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="160" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="180" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="200" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="220" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="240" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="260" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="280" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="300" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="320" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="340" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="360" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="380" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="400" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="420" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="440" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="460" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="480" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="500" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="520" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="540" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="560" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="580" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="600" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="620" y="310" width="20" height="8"/>
+  <rect class="kerb-w" x="640" y="310" width="20" height="8"/>
+  <rect class="kerb-r" x="660" y="310" width="20" height="8"/>
+
+  <line class="line-rd" x1="0" y1="349" x2="680" y2="349"/>
+  <line class="line-r" x1="0" y1="318" x2="680" y2="318"/>
+  <line class="line-r" x1="0" y1="387" x2="680" y2="387"/>
+
+  <path class="asphalt" d="M520,0 L680,0 L680,310 L600,310 Q540,310 520,250 L520,0 Z"/>
+  <path class="line-r" d="M520,0 L520,250 Q520,318 600,318 L680,318"/>
+  <path class="line-r" d="M600,0 L600,200 Q600,240 640,240 L680,240"/>
+
+  <rect class="kerb-r" x="520" y="0" width="8" height="20"/>
+  <rect class="kerb-w" x="520" y="20" width="8" height="20"/>
+  <rect class="kerb-r" x="520" y="40" width="8" height="20"/>
+  <rect class="kerb-w" x="520" y="60" width="8" height="20"/>
+  <rect class="kerb-r" x="520" y="80" width="8" height="20"/>
+  <rect class="kerb-w" x="520" y="100" width="8" height="20"/>
+  <rect class="kerb-r" x="520" y="120" width="8" height="20"/>
+  <rect class="kerb-w" x="520" y="140" width="8" height="20"/>
+  <rect class="kerb-r" x="520" y="160" width="8" height="20"/>
+  <rect class="kerb-w" x="520" y="180" width="8" height="20"/>
+  <rect class="kerb-r" x="520" y="200" width="8" height="20"/>
+  <rect class="kerb-w" x="520" y="220" width="8" height="20"/>
+
+  <rect class="asphalt" x="0" y="0" width="120" height="310"/>
+  <path class="line-r" d="M120,0 L120,200 Q120,310 200,310"/>
+  <path class="line-rd" d="M60,0 L60,180 Q60,260 160,260 L200,260"/>
+
+  <path d="M180,330 Q220,335 260,330 Q300,325 340,332" stroke="#252525" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M380,345 Q420,340 460,347 Q500,352 540,344" stroke="#252525" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M80,360 Q140,355 180,362" stroke="#252525" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <rect fill="#f0f0f0" x="195" y="318" width="6" height="69"/>
+  <rect fill="#1a1a1a" x="201" y="318" width="6" height="69"/>
+  <rect fill="#f0f0f0" x="207" y="318" width="6" height="69"/>
+  <rect fill="#1a1a1a" x="213" y="318" width="6" height="69"/>
+  <rect fill="#f0f0f0" x="219" y="318" width="6" height="69"/>
+
+  <line class="line-bright" x1="0" y1="290" x2="120" y2="290"/>
+  <line class="line-r" x1="0" y1="295" x2="100" y2="295"/>
+
+  <rect class="dot-r" x="560" y="8" width="4" height="30" rx="1"/>
+  <rect class="dot-r" x="570" y="8" width="4" height="30" rx="1"/>
+  <rect class="dot-r" x="580" y="8" width="4" height="22" rx="1"/>
+  <rect class="dot-r" x="590" y="8" width="4" height="22" rx="1"/>
+  <rect class="dot-r" x="600" y="8" width="4" height="14" rx="1"/>
+  <rect class="dot-r" x="610" y="8" width="4" height="14" rx="1"/>
+
+  <line class="line-dk" x1="20" y1="20" x2="100" y2="20"/>
+  <line class="line-dk" x1="20" y1="60" x2="100" y2="60"/>
+  <line class="line-dk" x1="20" y1="100" x2="100" y2="100"/>
+  <line class="line-dk" x1="20" y1="140" x2="100" y2="140"/>
+  <line class="line-dk" x1="20" y1="180" x2="100" y2="180"/>
+  <line class="line-dk" x1="20" y1="220" x2="100" y2="220"/>
+  <line class="line-r" x1="20" y1="20" x2="20" y2="240"/>
+  <line class="line-r" x1="100" y1="20" x2="100" y2="240"/>
+
+  <rect fill="#8b0000" fill-opacity="0.08" x="0" y="0" width="200" height="100"/>
+  <rect fill="#8b0000" fill-opacity="0.08" x="480" y="0" width="200" height="100"/>
+  <rect fill="#8b0000" fill-opacity="0.06" x="0" y="320" width="200" height="100"/>
+  <rect fill="#8b0000" fill-opacity="0.06" x="480" y="320" width="200" height="100"/>
+
+  <rect fill="#cc0000" x="0" y="0" width="680" height="3"/>
+  <rect fill="#cc0000" x="0" y="417" width="680" height="3"/>
+</svg>
