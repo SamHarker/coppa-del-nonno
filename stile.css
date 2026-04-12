@@ -55,11 +55,3 @@ body::before {
   opacity: 0.35;
   z-index: -1;
 }
-body {
-  background-color: #2b2b2b;
-  background-image: url('grafiche/background_coppa_nonno.svg');
-  background-size: 100% auto;
-  background-position: center bottom;
-  background-repeat: repeat-y;
-  background-attachment: scroll;
-}
