@@ -44,3 +44,12 @@
 .home-btn-vintage:hover::after {
   border-color: #ff4d4d;
 }
+
+body {
+  background-color: #2b2b2b;
+  background-image: url('grafiche/background_coppa_nonno.svg');
+  background-size: 100% auto;
+  background-position: center bottom;
+  background-repeat: repeat-y;
+  background-attachment: scroll;
+}
