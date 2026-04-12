@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Classifica Coppa del Nonno - Arese</title>
-  <link rel="stylesheet" href="stile.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -154,7 +153,7 @@
   // ── NATIONALITY → FLAG PATH ──────────────────────────────────────────────────
   const flagMap = {
     "italia":       "bandiere/italia.png",
-    "australia":    "bandiere/arcobaleno-48.png",
+    "australia":    "bandiere/australia.png",
     "svizzera":     "bandiere/svizzera.png",
     "germania":     "bandiere/germania.png",
     "francia":      "bandiere/francia.png",
@@ -285,9 +284,9 @@
       tbody.appendChild(tr);
     });
 
-    // Default sort: best lap ascending
+    // Default sort: slowest to fastest
     const table = document.getElementById("myTable");
-    sortTable(table, 4, table.querySelectorAll("th")[4], true);
+    sortTable(table, 4, table.querySelectorAll("th")[4], false);
   }
 
   // ── BACK ─────────────────────────────────────────────────────────────────────
