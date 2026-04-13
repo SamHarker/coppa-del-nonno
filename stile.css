@@ -45,6 +45,7 @@
   border-color: #ff4d4d;
 }
 
+/* Sfondo delle pagine */
 body::before {
   content: '';
   position: fixed;
@@ -54,4 +55,9 @@ body::before {
   background-position: center bottom;
   opacity: 0.3;
   z-index: -1;
+}
+
+/* font del sito */
+* {
+  font-family: Georgia, 'Times New Roman', serif;
 }
